@@ -14,7 +14,9 @@ From http://www.ractivejs.org/
 
 = Quick Facts =
 
- * [http://cdn.ractivejs.org/latest/ractive.js Ractive.js 0.4.0 (Uncompressed)]
+== Ractive.js 0.4.0 ==
+
+ * [http://cdn.ractivejs.org/0.4.0/ractive.js Ractive.js 0.4.0 (Uncompressed)]
  * Usage Stats http://trends.builtwith.com/javascript/RactiveJS
 
 
@@ -23,6 +25,10 @@ From http://www.ractivejs.org/
  * *{}SEC-C* <font color="red">*FAIL*</font> !JavaScript code will be executed from within HTML element's `textContent`
  * *{}SEC-D* <font color="red">*FAIL*</font> No enforced separation, no obvious way to outsource templates to static files
  * *{}SEC-E* <font color="red">*FAIL*</font> No dedicated security response program, a mailing list exists though
+
+== Ractive.js 0.7.2 ==
+
+_in review_
 
 = Injection Attacks =
 
@@ -33,7 +39,7 @@ The modern web's new XSS vector using the constructor trick also works in Ractiv
 The following "paste-and-go"-ready code example demonstrates that. 
 
 {{{
-<script src='http://cdn.ractivejs.org/latest/ractive.js'></script>
+<script src='http://cdn.ractivejs.org/0.4.0/ractive.js'></script>
 <div id="test">{{1..constructor.constructor("alert(1)")()}}</div>
 <script>
 new Ractive({template: '#test'});
@@ -60,7 +66,7 @@ new Ractive({template: '#test'});
 </script>
 }}}
 
-== Eval via Function ==
+=== Eval via Function ===
 
 As can be seen, very much like most other frameworks, Ractive.js is throwing templating expressions directly into the `Function` constructor for direct string-to-code. So, nothing new to see here, classic case over possible user-input meeting an `eval` equivalent.
 
@@ -81,7 +87,7 @@ function getFunctionFromString( str, i ) {
 }
 }}}
 
-== Peculiarities ==
+=== Peculiarities ===
 
 In Ractive.js, events are being declared by using dash-separated attribute names. This doesn't seem to be vulnerable but is worth a mention as it might aid an attacker in bypassing injection black-lists and do stuff to and with the existing code.
 
@@ -100,5 +106,17 @@ r = new Ractive({
 r.on('test', function(event) {
     alert(1)
 })
+</script>
+}}}
+
+== Ractive.js 0.7.2 ==
+
+_in review_
+
+{{{
+<script src='http://cdn.ractivejs.org/0.7.2/ractive.js'></script>
+<script id="test">{{1..constructor.constructor("alert(1)")()}}</script>
+<script>
+new Ractive({template: '#test'});
 </script>
 }}}
