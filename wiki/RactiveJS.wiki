@@ -25,8 +25,16 @@ From http://www.ractivejs.org/
  * *{}SEC-C* <font color="red">*FAIL*</font> !JavaScript code will be executed from within HTML element's `textContent`
  * *{}SEC-D* <font color="red">*FAIL*</font> No enforced separation, no obvious way to outsource templates to static files
  * *{}SEC-E* <font color="red">*FAIL*</font> No dedicated security response program, a mailing list exists though
+ * *{}SEC-F* <font color="red">*FAIL*</font> No CSP support yet
 
 == Ractive.js 0.7.2 ==
+
+ * *{}SEC-A* <font color="orange">*FAIL*</font> Template expressions are equivalent to `eval`, plans to avoid that exist
+ * *{}SEC-B* <font color="red">*FAIL*</font> No sandbox or isolated execution scope, yet attempts to pre-parse expressions
+ * *{}SEC-C* <font color="green">*PASS*</font> !JavaScript code will not be executed from HTML elements other than `script`
+ * *{}SEC-D* <font color="red">*FAIL*</font> No enforced separation, no obvious way to outsource templates to static files
+ * *{}SEC-E* <font color="red">*FAIL*</font> No dedicated security response program, a mailing list exists though
+ * *{}SEC-F* <font color="orange">*FAIL*</font> No CSP support yet, but plans to get rid of `Function`
 
 _currently under review_
 
