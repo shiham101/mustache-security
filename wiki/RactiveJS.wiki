@@ -126,3 +126,13 @@ new Ractive({template: '#test'});
 new Ractive({template: '#test2'});
 </script>
 }}}
+
+_TBD_
+
+{{{
+<script src='http://cdn.ractivejs.org/0.7.2/ractive.js'></script>
+<script id='template' type='text/ractive'>
+    {{=1 1=}}
+    1constructor.constructor('alert(1)')()1
+</script>
+}}}
