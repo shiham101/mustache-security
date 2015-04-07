@@ -119,7 +119,9 @@ r.on('test', function(event) {
 
 == Ractive.js 0.7.2 ==
 
-_currently under review_
+version 0.7.2 of the increasingly popular Ractive.js library has changed some fundamentals and thus gets a better security rating than its predecessors. Most importantly, it is not possible anymore to abuse elements other than `<script>` to include templates and thus execute arbitrary !JavaScript.
+
+The very common trick to escape the expression scope by using `constructor` is still available however.
 
 {{{
 <!-- garbage in script tag before template expression -->
@@ -135,7 +137,7 @@ new Ractive({template: '#test2'});
 </script>
 }}}
 
-_TBD_
+Further worth noting is the possibility, to change an expression's delimiter at runtime by using the construct `{{= =}}`. This allows to obfuscate the code heavily and potentially bypass server- and client-side restrictions that are supposed to detect and prevent injections.
 
 {{{
 <script src='http://cdn.ractivejs.org/0.7.2/ractive.js'></script>
@@ -144,3 +146,5 @@ _TBD_
     1constructor.constructor('alert(1)')()1
 </script>
 }}}
+
+There is indicators that Ractive.js might give up on the dependency on `Function` and thereby elevate to a level where compatibility with CSP is possible. Once that has been implemented, another review will take place.
